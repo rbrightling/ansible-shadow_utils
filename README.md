@@ -1,6 +1,8 @@
 Shadow Utils
 ============
 
+![Test Ansible Role](https://github.com/rbrightling/ansible-shadow_utils/workflows/Test%20Ansible%20Role/badge.svg) [![Ansible Galaxy](http://img.shields.io/badge/galaxy-rbrightling.shadow_utils-660198.svg?style=flat)](https://galaxy.ansible.com/rbrightling/shadow_utils)
+
 Manage the shadow utilies package configuration used for managing users and groups accounts on systems.
 
 Best practice security has tried to be applied to the default configurations; however, always ensure sufficiant
