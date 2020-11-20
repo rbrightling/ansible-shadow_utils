@@ -1,0 +1,14 @@
+---
+# Debian generic configuration.
+
+shadow_utils__packages: 
+  - login
+  - passwd
+
+shadow_utils__shell: "/bin/sh"
+
+shadow_utils__mail_dir: "/var/mail"
+
+shadow_utils__login_defs_path: "/etc/login.defs"
+
+shadow_utils__useradd_path: "/etc/default/useradd"

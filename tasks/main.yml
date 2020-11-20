@@ -1,0 +1,46 @@
+---
+# tasks file for shadow
+# Load any distro speicic variables then
+# select the type of playbook for the state selected, run a distory speicifc 
+# playbook if available or use the generic default.
+
+- name: Include distribution specific variable.
+  include_vars: "{{ lookup('first_found', params) }}"
+  vars:
+    params:
+      files:
+        - "{{ ansible_distribution | lower }}.yml"
+        - "{{ ansible_os_family | lower }}.yml"
+      paths:
+        - '{{ playbook_dir }}/vars'
+        - '{{ role_path }}/vars'
+
+- name: Shadow installed
+  package:
+    name: "{{ shadow_utils__packages }}"
+    state: 'present'
+  become: true
+  tags:
+    - install
+
+- name: Template login.defs configuration
+  template:
+    src: login.defs.j2
+    dest: "{{ shadow_utils__login_defs_path }}"
+    owner: root
+    group: root
+    mode: "0644"
+  become: true
+  tags:
+    - configure
+
+- name: Template default useradd configuration
+  template:
+    src: useradd.j2
+    dest: "{{ shadow_utils__useradd_path }}"
+    owner: root
+    group: root
+    mode: "0644"
+  become: true
+  tags:
+    - configure

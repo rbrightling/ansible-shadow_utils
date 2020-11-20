@@ -1,0 +1,14 @@
+---
+# RHEL generic configuration.
+
+shadow_utils__packages: 
+  - 'shadow-utils'
+  - 'passwd'
+
+shadow_utils__shell: "/bin/bash"
+
+shadow_utils__mail_dir: "/var/spool/mail"
+
+shadow_utils__login_defs_path: "/etc/login.defs"
+
+shadow_utils__useradd_path: "/etc/default/useradd"

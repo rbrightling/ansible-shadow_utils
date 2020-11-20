@@ -1,0 +1,25 @@
+galaxy_info:
+  role_name: shadow_utils
+  author: Robert Brightling
+  description: Manage the shadow utils configuration on a system.
+
+  license: LGPLv3
+
+  min_ansible_version: 2.8
+
+  platforms:
+  - name: Debian
+    versions:
+      - Buster
+  - name: EL
+    versions:
+      - 8
+
+  galaxy_tags:
+    - users
+    - groups
+    - shadow
+    - system
+    - shadowutils
+
+dependencies: []

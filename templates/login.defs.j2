@@ -1,0 +1,80 @@
+{{ ansible_managed|comment }}
+# /etc/login.defs - Configuration control definition for the login package.
+{% macro login_defs_format(option, value) -%}
+{% if value is not none %}
+{% if option|lower in ['env_path', 'env_supath'] %}
+{{ option|upper }} PATH={{ value|login_defs_option }}
+{% else %}
+{{ option|upper }} {{ value|login_defs_option }}
+{% endif %}
+{% endif %}
+{%- endmacro -%}
+#
+# Mail Configuration
+#
+{{ login_defs_format("MAIL_DIR", shadow_utils_mail_dir) -}}
+{{ login_defs_format("MAIL_FILE", shadow_utils_mail_file) -}}
+#
+# Enable logging and display of logins 
+{{ login_defs_format("FAILLOG_ENAB", shadow_utils_faillog_enab) -}}
+{{ login_defs_format("LOG_UNKFAIL_ENAB", shadow_utils_log_unkfail_enab) -}}
+{{ login_defs_format("LOG_OK_LOGINS", shadow_utils_log_ok_logins) -}}
+{{ login_defs_format("SYSLOG_SU_ENAB", shadow_utils_syslog_su_enab) -}}
+{{ login_defs_format("SYSLOG_SG_ENAB", shadow_utils_syslog_sg_enab) -}}
+{{ login_defs_format("SULOG_FILE", shadow_utils_sulog_file) -}}
+{{ login_defs_format("TTYTYPE_FILE", shadow_utils_ttytype_file) -}}
+{{ login_defs_format("FTMP_FILE", shadow_utils_ftmp_file) -}}
+{{ login_defs_format("SU_NAME", shadow_utils_su_name) -}}
+#
+# Pass Settings
+#
+{{ login_defs_format("ENV_SUPATH", shadow_utils_env_supath) -}}
+{{ login_defs_format("ENV_PATH", shadow_utils_env_path) -}}
+#
+# Terminal Permissions
+#
+{{ login_defs_format("TTYGROUP", shadow_utils_ttygroup) -}}
+{{ login_defs_format("TTYPERM", shadow_utils_ttyperm) -}}
+#
+# Login configuration initiziation
+#
+{{ login_defs_format("ERASECHAR", shadow_utils_erasechar) -}}
+{{ login_defs_format("KILLCHAR", shadow_utils_killchar) -}}
+{{ login_defs_format("UMASK", shadow_utils_umask) -}}
+{{ login_defs_format("HUSHLOGIN_FILE", shadow_utils_hushlogin_file) -}}
+#
+# Password aging controls
+#
+{{ login_defs_format("PASS_MAX_DAYS", shadow_utils_pass_max_days) -}}
+{{ login_defs_format("PASS_MIN_DAYS", shadow_utils_pass_min_days) -}}
+{{ login_defs_format("PASS_WARN_AGE", shadow_utils_pass_warn_age) -}}
+#
+# Min/max values for automatic uid selection in useradd
+#
+{{ login_defs_format("UID_MIN", shadow_utils_uid_min) -}}
+{{ login_defs_format("UID_MAX", shadow_utils_uid_max) -}}
+{{ login_defs_format("SYS_UID_MIN", shadow_utils_sys_uid_min) -}}
+{{ login_defs_format("SYS_UID_MAX", shadow_utils_sys_uid_max) -}}
+
+#
+# Min/max values for automatic gid selection in groupadd
+#
+{{ login_defs_format("GID_MIN", shadow_utils_gid_min) -}}
+{{ login_defs_format("GID_MAX", shadow_utils_gid_max) -}}
+{{ login_defs_format("SYS_GID_MIN", shadow_utils_sys_gid_min) -}}
+{{ login_defs_format("SYS_GID_MAX", shadow_utils_sys_gid_max) -}}
+
+#
+# Login options
+#
+{{ login_defs_format("LOGIN_RETRIES", shadow_utils_login_retries) -}}
+{{ login_defs_format("LOGIN_TIMEOUT", shadow_utils_login_timeout) -}}
+#
+# Other options
+#
+{{ login_defs_format("CHFN_RESTRICT", shadow_utils_chfn_restrict) -}}
+{{ login_defs_format("DEFAULT_HOME", shadow_utils_default_home) -}}
+{{ login_defs_format("CREATE_HOME", shadow_utils_create_home) -}}
+{{ login_defs_format("USERDEL_CMD", shadow_utils_userdel_cmd) -}}
+{{ login_defs_format("USERGROUPS_ENAB", shadow_utils_usergroups_enab) -}}
+{{ login_defs_format("ENCRYPT_METHOD", shadow_utils_encrypt_method) -}}
