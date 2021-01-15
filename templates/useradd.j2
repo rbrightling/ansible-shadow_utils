@@ -1,24 +1,24 @@
 # {{ ansible_managed }}
 # Default values for useradd(8)
 #
-{% if shadow_utils_shell %}
+{% if shadow_utils_shell is not none %}
 SHELL={{ shadow_utils_shell }}
 {% endif %}
-{% if shadow_utils_group %}
+{% if shadow_utils_group is not none %}
 GROUP={{ shadow_utils_group }}
 {% endif %}
-{% if shadow_utils_home %}
+{% if shadow_utils_home is not none %}
 HOME={{ shadow_utils_home }}
 {% endif %}
-{% if shadow_utils_inactive %}
+{% if shadow_utils_inactive is not none %}
 INACTIVE={{ shadow_utils_inactive }}
 {% endif %}
-{% if shadow_utils_expire %}
+{% if shadow_utils_expire is not none %}
 EXPIRE={{ shadow_utils_expire }}
 {% endif %}
-{% if shadow_utils_skel %}
+{% if shadow_utils_skel is not none %}
 SKEL={{ shadow_utils_skel }}
 {% endif %}
-{% if shadow_utils_create_mail_spool %}
+{% if shadow_utils_create_mail_spool is not none %}
 CREATE_MAIL_SPOOL={{ 'yes' if shadow_utils_create_mail_spool else 'no' }}
 {% endif %}
