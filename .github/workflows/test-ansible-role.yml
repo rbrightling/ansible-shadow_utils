@@ -1,6 +1,6 @@
 name: Test Ansible Role
 
-on: [push, pull_request]
+on: [push]
 
 jobs:
   lint:
